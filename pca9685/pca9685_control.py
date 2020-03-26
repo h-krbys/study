@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import Adafruit_PCA9685
+import time
 
 # Initialise the PCA9685 using desired address and/or bus:
 pwm = Adafruit_PCA9685.PCA9685(address = 0x40, busnum = 1)
@@ -25,15 +26,14 @@ while True:
         time.sleep(1)
     for i in range(servo_num):
         print('Moving servo on channel: ', i)
-        pwm.set_pwm(i, 0, servo_max + servo_offset)
+        pwm.set_pwm(i, 0, servo_max - servo_offset)
         time.sleep(1)
     # Move servo on all channel
-    for i in range(servo_num - 1):
-    	print('Moving servo on channel: ', i)
+    for i in range(servo_num):
+        print('Moving servo on channel: ', i)
         pwm.set_pwm(i, 0, servo_min + servo_offset)
     time.sleep(1)
-    for i in range(servo_num - 1):
-    	print('Moving servo on channel: ', i)
-        pwm.set_pwm(i, 0, servo_max + servo_offset)
+    for i in range(servo_num):
+        print('Moving servo on channel: ', i)
+        pwm.set_pwm(i, 0, servo_max - servo_offset)
     time.sleep(1)
-
