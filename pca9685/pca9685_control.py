@@ -14,7 +14,7 @@ servo_num = 12
 pwm.set_pwm_freq(60)
 
 while True:
-    pos = input('Enter servo position (150-600): ')
-    for i in range(servo_num):
-        pwm.set_pwm(i, 0, pos)
+    channel  = input('Enter channel  (0-11)   : ')
+    position = input('Enter position (150-600): ')
+    pwm.set_pwm(channel, 0, position)
     time.sleep(2)
